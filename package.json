@@ -1,0 +1,20 @@
+{
+  "name": "Desafio-Ford-Equipe_Verde",
+  "version": "1.0.0",
+  "description": "O objetivo desse desafio é criar 2 funções, uma para criptografia e outra para descriptografia. A estratégia adotada pela Equipe Verde é transformar o valor de entrada em uma String, converte-lo para hexadecimal e de acordo com seu valor (par ou ímpar realizar uma operação de soma diferente);",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jodiel-Briesemeister/Desafio-Ford-Equipe_Verde.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jodiel-Briesemeister/Desafio-Ford-Equipe_Verde/issues"
+  },
+  "homepage": "https://github.com/Jodiel-Briesemeister/Desafio-Ford-Equipe_Verde#readme"
+}
