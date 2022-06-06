@@ -1,44 +1,37 @@
-const changeToString = (value, subvalue) => {
-    const valueArray = value.split("-");
-    let result = "";
-  
-    valueArray.forEach((value) => {
-        const calcValue = value - subvalue
-        result += `${String.fromCharCode(calcValue)}`
-    })
-  
-    return result;
-  }
-  
-  const subHex = (value) => {
-    const valueArray = value.split("");
-    let result = 0;
-  
-    valueArray.forEach((value) => {
-        result -= value.charCodeAt();
-    })
-  
-    return result;
-  };
-  
-  const removePassword = (value, token) => {
-    const tokenNumber = subHex(token);
-    const valueArray = value.split("-");
+const { sumHex } = require('./utils/sumHex');
 
-    let result = 0;
-  
-    valueArray.forEach((value) => {
-        if (value !== '') { 
-          result -= `${parseInt((value.charCodeAt() - tokenNumber))}-`;
-        }
-    })
+const changeToString = (value) => {
+  const valueArray = value.split("-");
+  let result = "";
 
-    return result;
-  }
+  valueArray.forEach((value) => {
+      if (value !== "") result += `${String.fromCharCode(value)}`;
+  })
+
+  return result;
+}
+
+const removePassword = (value, token) => {
+  const valueArray = value.split("-");
+  let result = "";
+
+  valueArray.forEach((value) => {
+      if (value !== '') { 
+        result += `${parseInt(value) - token}-`;
+      }
+  })
+
+  return result;
+}
   
-  const descriptografar = (value, token) => {
-    const result = changeToString(removePassword(value, token));
-    return result;
-  }
-  
-  console.log(descriptografar("252-252-252-", "ABC"));
+const descriptografar = (value, token) => {
+  const hexToken = sumHex(token);
+  const withoutPassword = removePassword(value, hexToken);
+  const result = changeToString(withoutPassword);
+
+  return result;
+}
+
+module.exports = {
+  descriptografar,
+}
